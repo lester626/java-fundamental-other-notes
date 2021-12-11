@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<form method="post" th:action="@{/orders/create}" th:object="${orderForm}">
+    <label>
+        Product name:
+        <input type="text" th:field="*{productName}">
+    </label>
+
+    <label>
+        Amount:
+        <input type="number" th:field="*{amount}">
+        <ul th:if="${#fields.hasErrors('amount')}">
+            <li th:each="err : ${#fields.errors('amount')}" th:text="${err}">_Input is incorrect</li>
+        </ul>
+    </label>
+
+    <button type="submit">SEND DATA</button>
+</form>
+</body>
+</html>

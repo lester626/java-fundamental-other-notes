@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Home</title>
+</head>
+<body>
+<div th:switch="${students}">
+    <h3 th:case="null">No records present.</h3>
+    <div th:case="*">
+        <table>
+            <thead>
+            <tr>Id</tr>
+            <tr>First Name</tr>
+            <tr>Last Name</tr>
+            <tr>Age</tr>
+            <tr>Course</tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.getId()}"}></td>
+                <td th:text="${student.getFirstName()}"></td>
+                <td th:text="${student.getLastName()}"></td>
+                <td th:text="${student.getAge()}"></td>
+                <td th:text="${student.getCourse()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/register-student">Register</a></p>
+</div>
+</body>
+</html>
